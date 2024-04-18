@@ -27,7 +27,7 @@ To run the demo script, execute:
 
 ## Features
 
-This project includes demonstrations of the following Redis functionalities:
+This project includes demonstrations of the following **Redis data types**:
 - **Strings**: Saving, modifying, and retrieving string values.
 - **Lists**: Operations on lists including pushing and setting elements.
 - **Hashes**: Creating and modifying hash maps.
@@ -36,6 +36,8 @@ This project includes demonstrations of the following Redis functionalities:
 - **HyperLogLog**: Estimating the cardinality of a set.
 - **Geospatial Indexes**: Managing geospatial data and queries.
 - **Streams**: Working with Redis streams for messaging.
+
+Furthermore, it demonstrates the following **cross-cutting functionalities**:
 - **Key Expiration**: Setting a specific expiration time for individual keys.
 - **Data Persistence**: Persisting data for recovery both as RDB snapshots and more frequently as AppendOnlyFile.
 
