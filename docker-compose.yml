@@ -10,4 +10,4 @@ services:
     command: redis-server /usr/local/etc/redis/redis.conf  # Get configuration from config file
     volumes:
       - ./config/redis.conf:/usr/local/etc/redis/redis.conf  # Maps the configuration
-      - ./redis_data:/data  # Maps './redis_data' on the host to '/data' in the container
+      - ./data/redis:/data  # Maps './redis_data' on the host to '/data' in the container
