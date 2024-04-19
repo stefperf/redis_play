@@ -58,26 +58,29 @@ def redis_demo():
     print()
 
     print("Sorted Sets: Saving, Modifying, and Retrieving")
-    r0.zadd('mysortedset', {'a': 1, 'b': 2, 'c': 3})      # Save elements to a sorted set
-    r0.zadd('mysortedset', {'a': 5})                      # Modify the score of an element
-    print(r0.zrange('mysortedset', 0, -1, withscores=True))  # Get the sorted set
+    sortedset_key = 'mysortedset'
+    r0.zadd(sortedset_key, {'a': 1, 'b': 2, 'c': 3})      # Save elements to a sorted set
+    r0.zadd(sortedset_key, {'a': 5})                      # Modify the score of an element
+    print(r0.zrange(sortedset_key, 0, -1, withscores=True))  # Get the sorted set
     print()
 
     print("HyperLogLog: Adding elements and estimating cardinality")
-    estimated_users = r0.pfcount('hll_users')                                # Estimate cardinality
+    hll_key = 'hll_users'
+    estimated_users = r0.pfcount(hll_key)                                # Estimate cardinality
     print("Estimated number of unique users:", estimated_users)
-    r0.pfadd('hll_users', 'user1', 'user2', 'user3', 'user2')  # Add elements
-    r0.pfadd('hll_users', 'user1', 'user5', 'user7', 'user8')  # Add elements
-    estimated_users = r0.pfcount('hll_users')                                # Estimate cardinality
+    r0.pfadd(hll_key, 'user1', 'user2', 'user3', 'user2')  # Add elements
+    r0.pfadd(hll_key, 'user1', 'user5', 'user7', 'user8')  # Add elements
+    estimated_users = r0.pfcount(hll_key)                                # Estimate cardinality
     print("Estimated number of unique users:", estimated_users)
     print()
 
     print("Geospatial Indexes: Adding, querying distance, and querying nearby members")
-    r0.geoadd('cities', (13.361389, 38.115556, 'Palermo'))
-    r0.geoadd('cities', (15.087269, 37.502669, 'Catania'))
-    distance = r0.geodist('cities', 'Palermo', 'Catania', unit='km')          # Distance b/w cities
-    position = r0.geopos('cities', 'Palermo')                                       # Position of Palermo
-    nearby_cities = r0.georadiusbymember('cities', 'Catania', 200, 'km') # Cities within 200 km
+    geo_key = 'cities'
+    r0.geoadd(geo_key, (13.361389, 38.115556, 'Palermo'))
+    r0.geoadd(geo_key, (15.087269, 37.502669, 'Catania'))
+    distance = r0.geodist(geo_key, 'Palermo', 'Catania', unit='km')          # Distance b/w cities
+    position = r0.geopos(geo_key, 'Palermo')                                       # Position of Palermo
+    nearby_cities = r0.georadiusbymember(geo_key, 'Catania', 200, 'km') # Cities within 200 km
     print("Distance between cities:", distance)
     print("Position of Palermo:", position)
     print("Cities within 200 km of Catania:", nearby_cities)
