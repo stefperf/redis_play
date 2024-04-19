@@ -21,9 +21,13 @@ Install the required Python packages:
 
 ## Usage
 
+To bring up the needed Redis microservice, simply execute:
+
+    docker-compose up -d
+
 To run the demo script, execute:
 
-    python redis_play.py
+    python main.py
 
 ## Features
 
