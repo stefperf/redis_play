@@ -9,5 +9,5 @@ services:
     restart: always  # Optional: Ensures the container restarts if it goes down
     command: redis-server /usr/local/etc/redis/redis.conf  # Get configuration from config file
     volumes:
-      - ./config/redis.conf:/usr/local/etc/redis/redis.conf  # Maps the configuration
-      - ./data/redis:/data  # Maps './redis_data' on the host to '/data' in the container
+      - ./redis/config/redis.conf:/usr/local/etc/redis/redis.conf  # Maps the configuration
+      - ./redis/data:/data  # Maps './redis_data' on the host to '/data' in the container
